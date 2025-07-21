@@ -1,14 +1,33 @@
 import React from 'react';
+import './Header.css';
 
-function Header(){
-    return(
-        <header style={{backgroundColor: '#f7f7f7', padding: '1rem'}}>
-            <h1>🌸 Fleurie</h1>
-            <nav>
-                <a href="/"> Acceuil </a> | <a href="/boutique"> Boutique</a>
-            </nav>
-        </header>
-    );
-}
+const Header = () => {
+  const topLinks = [
+    { name: 'Q Search', icon: '🔍' },
+    { name: 'Help', icon: '❓' },
+    { name: 'ProPerks', icon: '💎' },
+    { name: 'Sign In', icon: '👤' }
+  ];
+
+  return (
+    <header className="main-header">
+      <div className="header-content">
+        {/* Votre logo et navigation principale ici */}
+        
+        <div className="top-links">
+          {topLinks.map(link => (
+            <button 
+              key={link.name}
+              className="top-link-btn"
+            >
+              <span className="link-icon">{link.icon}</span>
+              {link.name}
+            </button>
+          ))}
+        </div>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

@@ -1,0 +1,27 @@
+.top-links {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.top-link-btn {
+  background: none;
+  border: none;
+  margin-left: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #57606f;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.top-link-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.link-icon {
+  margin-right: 0.3rem;
+  font-size: 1rem;
+}
