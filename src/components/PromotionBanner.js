@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import './PromotionBanner.css';
+import '@styles/PromotionBanner.css';
 
 const pulse = keyframes `
   0% { transform: scale(1); }
@@ -20,9 +20,9 @@ const StyledBanner = styled.div `
 
 const DiscountBadge = styled.div`
   position: absolute;
-  top: -10px;
-  right: -10px;
-  background: #ff4757;
+  top: 2px;
+  right: 5px;
+  background: #451a2b;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 20px;
@@ -61,7 +61,7 @@ const PromotionBanner = () => {
             </div>
 
             <button className="shop-btn">
-                <span className='flower-icon'>🌹</span>
+                <span className='flower-icon'></span>
                 SHOP BEST SELLERS
             </button>
             

@@ -1,33 +1,25 @@
-import React from 'react';
-import './Header.css';
+import React, {useState} from 'react';
+import '@styles/Header.css';
+import { NavLink } from 'react-router-dom';
 
-const Header = () => {
-  const topLinks = [
-    { name: 'Q Search', icon: '🔍' },
-    { name: 'Help', icon: '❓' },
-    { name: 'ProPerks', icon: '💎' },
-    { name: 'Sign In', icon: '👤' }
-  ];
+
+export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="main-header">
-      <div className="header-content">
-        {/* Votre logo et navigation principale ici */}
-        
-        <div className="top-links">
-          {topLinks.map(link => (
-            <button 
-              key={link.name}
-              className="top-link-btn"
-            >
-              <span className="link-icon">{link.icon}</span>
-              {link.name}
-            </button>
-          ))}
-        </div>
+    <header className="navbar">
+      <div className='navbar-logo'> 🌸 Fleurora Shop </div>
+
+      <div className='hamburger' onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? '✖' : '☰'}
       </div>
+      <nav className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+        <NavLink to="/" className="nav-link" onClick={() => setMenuOpen(false)}>Home</NavLink>
+        <NavLink to="/search" className="nav-link" onClick={() => setMenuOpen(false)}>search</NavLink>
+        <NavLink to="/help" className="nav-link" onClick={() => setMenuOpen(false)}>Help</NavLink>
+        <NavLink to="/signin" className="nav-link" onClick={() => setMenuOpen(false)}>Sign In</NavLink>
+      </nav>
     </header>
   );
-};
+}
 
-export default Header;

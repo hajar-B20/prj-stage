@@ -1,0 +1,193 @@
+/* Make the footer stretch across full screen */
+.footer {
+  background-color: #f9f5f2;
+  color: #2e2e2e;
+  width: 120%;
+  padding: 40px 0; /* Removed horizontal padding */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Optional container inside the footer to center content (like ProFlowers) */
+.footer-main,
+.footer-top-row,
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Adds inner spacing only inside content */
+}
+
+.footer-top-row {
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  padding-left: 20px; /* Align left edge nicely */
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-columns-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  flex: 2;
+}
+
+.footer-column {
+  min-width: 150px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-list li,
+.footer-list strong {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-right {
+  flex: 1;
+  min-width: 250px;
+  padding-right: 20px; /* align right edge */
+}
+
+.newsletter-signup {
+  display: flex;
+  margin-top: 10px;
+}
+
+.newsletter-signup input {
+  padding: 8px;
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+.newsletter-signup .signup {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.signup:hover {
+  background-color: #444;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+  padding: 15px 20px 0 20px;
+}
+
+
+
+/* Mobile collapsible logic */
+@media (max-width: 768px) {
+  .footer-toggle {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #FFD7D7;
+  }
+
+  .footer-list {
+    display: none;
+  }
+
+  .footer-list.open {
+    display: block;
+  }
+
+  .footer-column h4 {
+    margin: 0;
+  }
+
+  .arrow {
+    font-size: 14px;
+  }
+}
+
+/* Center the entire social icons section */
+.social-icons-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Style the icons container */
+.social-icons {
+  display: flex;
+  gap: 20px; /* Space between icons */
+  justify-content: center;
+  flex-wrap: wrap; /* Allow icons to wrap on small screens */
+}
+
+/* Style individual icons */
+.social-icons i {
+  font-size: 1.5rem;
+  color: #57606f;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons i:hover {
+  color: white;
+  background: #ff6b81; /* Your theme color */
+  transform: translateY(-3px);
+}
+
+.social-icons{
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+
+}
+
+.social-icons i {
+    font-size: 1.2rem;
+    color: #57606f;
+    transition: color 0.3s;
+}
+
+.social-icons i:hover {
+    color: #ff6b81
+}

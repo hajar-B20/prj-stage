@@ -1,5 +1,9 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   text-align: center;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .App-logo {
@@ -34,5 +38,89 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f5e5e5;
+  color: #222
+}
+
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark a,
+body.dark .App {
+  color: #e0e0e0;
+  background-color: #121212;
+}
+
+.center-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-toggle-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ff5b8c;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-toggle-btn:hover {
+  background-color: #e14c7a;
+}
+
+.dark-mode .search-toggle-btn {
+  background-color: #444;
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+h1{
+  font-size: 2rem;
+}
+
+p{
+  font-size: 1rem;
+}
+
+/* Responsive utilities */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  main {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
   }
 }
