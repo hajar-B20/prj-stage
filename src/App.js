@@ -6,6 +6,7 @@ import Accueil from '@pages/Accueil';
 import SearchSection from '@components/SearchSection';
 import GiftSearchCard from '@components/GiftSearchCard';
 import PopularBouquets from '@components/PopularBouquets';
+import BirthdayBlooms from '@components/BirthdayBlooms';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
       <main>
         <GiftSearchCard /> 
         <Accueil />
+        <BirthdayBlooms />
         <PopularBouquets />       
         <Footer />
       </main>

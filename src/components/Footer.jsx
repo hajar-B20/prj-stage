@@ -36,12 +36,10 @@ const Footer = () => {
         {/* Left: columns group */}
         <div className="footer-columns-left">
           {renderColumn("Help", [
-            { label: "Help" },
             "Customer Service",
             "Sitemap",
           ])}
           {renderColumn("Account", [
-            { label: "Account" },
             "Manage Your Account",
             "Track Your Order",
             "Order History",
