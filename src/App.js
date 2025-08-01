@@ -1,5 +1,6 @@
-import React,  {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import EventBanner from '@components/EventBanner';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import Accueil from '@pages/Accueil';
@@ -8,39 +9,28 @@ import GiftSearchCard from '@components/GiftSearchCard';
 import PopularBouquets from '@components/PopularBouquets';
 import BirthdayBlooms from '@components/BirthdayBlooms';
 
-
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') setDarkMode(true);
-  }, []);
-
-  useEffect(() => {
-    document.body.className = darkMode ? 'dark' : '';
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
-
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = 'auto';
+      };
+    }, []);
 
   return (
-    <div className = {`App ${darkMode ? 'dark-mode' : ''}`}>
-      <Header />
+    <div className="App">
+      <EventBanner />
+      <Header onSearchClick={() => setShowSearch(!showSearch)} />
 
-        <div className="center-toggle">
-          <button onClick={() => setShowSearch(!showSearch)} className='search-toggle-btn'>
-            {showSearch ? 'Return' : '🔍 Search Category'}
-          </button>
-        </div>
+      {showSearch && <SearchSection />}
 
-      {showSearch && <SearchSection darkMode={darkMode} setDarkMode={setDarkMode} /> }
-      
       <main>
-        <GiftSearchCard /> 
+        <GiftSearchCard />
         <Accueil />
         <BirthdayBlooms />
-        <PopularBouquets />       
+        <PopularBouquets />
         <Footer />
       </main>
     </div>

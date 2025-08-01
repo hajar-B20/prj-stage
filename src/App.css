@@ -4,6 +4,9 @@
   min-height: 100vh;
   text-align: center;
   transition: background-color 0.3s, color 0.3s;
+
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -49,15 +52,8 @@ body {
   color: #222
 }
 
-body.dark {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-body.dark a,
-body.dark .App {
-  color: #e0e0e0;
-  background-color: #121212;
+body, html {
+  overflow-x: hidden;
 }
 
 .center-toggle {

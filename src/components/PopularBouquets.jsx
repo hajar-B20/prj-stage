@@ -19,26 +19,26 @@ const bouquets = [
     {name: "TO MY LOVE Bouquet", price: "350DH - 400DH", delivery: "SAME DAY DELIVERY", image: bouquet6},
     {name: "RBI IHFDK LIYA", price: "150DH - 250DH", delivery: "SAME DAY DELIVERY", image: bouquet7}
 
-    
 ];
 
 export default function PopularBouquets () {
     const scrollRef = useRef(null);
 
     const scrollRight = () => {
-        scrollRef.current.scrollBy({left: 300, behavior: 'smooth' });
+      if (scrollRef.current) {
+        scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+      }
     };
+
 
 return (
     <section className="bouquet-section">
       <h2 className="section-title">Our Most Popular Bouquets</h2>
 
       <div className="scroll-container">
-        <div className="bouquet-grid-horizontal" ref={scrollRef}>
+        <div className="bouquet-grid-horizontal" ref={scrollRef} style={{ overflowX: 'auto' }}>
           {bouquets.map((b, i) => (
             <div className="bouquet-card" key={i}>
-            
-            ;
               <img src={b.image} alt={b.name} className="bouquet-img" />
               <h3>{b.name}</h3>
               <p className="price">{b.price}</p>

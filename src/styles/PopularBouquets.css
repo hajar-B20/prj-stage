@@ -16,7 +16,7 @@
 /* Scroll wrapper */
 .scroll-container {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 .bouquet-grid-horizontal {
