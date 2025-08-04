@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import './App.css';
+import { Routes, Route, useLocation } from 'react-router-dom';
+
 import EventBanner from '@components/EventBanner';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
@@ -8,30 +10,48 @@ import SearchSection from '@components/SearchSection';
 import GiftSearchCard from '@components/GiftSearchCard';
 import PopularBouquets from '@components/PopularBouquets';
 import BirthdayBlooms from '@components/BirthdayBlooms';
+import SignIn from '@pages/SignIn';
+import SignUp from '@pages/SignUp';
 
 function App() {
+  const location = useLocation();
   const [showSearch, setShowSearch] = useState(false);
 
+
   useEffect(() => {
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = 'auto';
-      };
-    }, []);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  const isSearchPage = location.pathname === '/search';
 
   return (
     <div className="App">
-      <EventBanner />
-      <Header onSearchClick={() => setShowSearch(!showSearch)} />
-
-      {showSearch && <SearchSection />}
+      {/* Only show these if NOT on the search page */}
+      {!isSearchPage && <EventBanner />}
+      {!isSearchPage && <Header onSearchClick={() => setShowSearch(!showSearch)} />}
+      {!isSearchPage && showSearch && <SearchSection />}
 
       <main>
-        <GiftSearchCard />
-        <Accueil />
-        <BirthdayBlooms />
-        <PopularBouquets />
-        <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <GiftSearchCard />
+                <Accueil />
+                <BirthdayBlooms />
+                <PopularBouquets />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/search" element={<SearchSection />} />
+        </Routes>
       </main>
     </div>
   );

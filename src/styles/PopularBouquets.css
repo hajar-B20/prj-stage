@@ -17,17 +17,21 @@
 .scroll-container {
   position: relative;
   overflow-x: auto;
+  width: 100%;
+  padding-bottom: 20px;
 }
+
 
 .bouquet-grid-horizontal {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
   gap: 30px;
-  padding: 10px 20PX 20px 20px;
+  padding: 10px 20px 20px 20px;
   margin-bottom: 0.2px;
   scroll-padding-left: 20px;
   scrollbar-width: none;
+  width: max-content; 
 }
 
 .bouquet-grid-horizontal::-webkit-scrollbar {
