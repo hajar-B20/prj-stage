@@ -11,3 +11,10 @@
   align-items: center;
 }
 
+.home-menu-bar {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}

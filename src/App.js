@@ -12,6 +12,7 @@ import PopularBouquets from '@components/PopularBouquets';
 import BirthdayBlooms from '@components/BirthdayBlooms';
 import SignIn from '@pages/SignIn';
 import SignUp from '@pages/SignUp';
+import BestSellers from '@pages/BestSellers';
 
 function App() {
   const location = useLocation();
@@ -51,6 +52,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/search" element={<SearchSection />} />
+          <Route path="/best-sellers" element={<BestSellers />} />
         </Routes>
       </main>
     </div>
