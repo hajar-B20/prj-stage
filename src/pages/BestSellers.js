@@ -11,25 +11,86 @@ import sweetAsCanBe from '@assets/BS5.jpeg';
 import cleeful from '@assets/BS6.jpeg';
 import sunshine from '@assets/BS7.jpeg';
 import sweetheart from '@assets/BS8.jpeg';
+import ILoveYou from '@assets/BS9.jpeg';
+import MyDearling from '@assets/BS10.jpeg';
+import Honey from '@assets/BS11.jpeg';
+import HeartBeat from '@assets/BS12.jpeg';
+import MyCandy from '@assets/BS13.jpeg';
+import Hbiiiba from '@assets/BS14.jpeg';   
+
 
 const BestSellersPage = () => {
-  const [sortOption, setSortOption] = useState('Relevance');
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [activeSort, setActiveSort] = useState('Relevance');
+  const [activeFilters, setActiveFilters] = useState({  // Added this line
+    occasion: null,
+    flowerType: null,
+    color: null,
+    priceRange: null
+  });
+  const [showDropdown, setShowDropdown] = useState(null);
 
+  
   const sortOptions = [
-    'Relevance',
+    'Relevance', 
     'Lowest Price',
     'Highest Price',
     'Most Popular',
     'Newest Arrivals'
   ];
 
-  const filterOptions = [
-    'Occasion',
-    'Flower Type',
-    'Color',
-    'Price Range',
-    'Delivery Date'
+  // Filter options
+  const filterCategories = [
+    
+
+    { name: 'Occasion',
+      options: [
+        'Birthday',
+        'Sympathy',
+        'Anniversary',
+        'Get Well',
+        'Congratulations'
+      ],
+      key: 'occasion'
+    },
+    {
+      name: 'Flower Type',
+      options: [
+        'Rose',
+        'Lily',
+        'Sunflower',
+        'Carnation',
+        'Daisy',
+        'Snapdragon',
+        'Hydrangea',
+        'Alstroemeria',
+        'Mixed'
+      ],
+      key: 'flowerType'
+    },
+    {
+      name: 'Color',
+      options: [
+        'White',
+        'Pink',
+        'Purple',
+        'Red',
+        'Yellow',
+        'Blue',
+        'Orange',
+        'Green'
+      ],
+      key: 'color'
+    },
+    {
+      name: 'Price Range',
+      options: [
+        '$45 - $60',
+        '$61 - $75',
+        '$76 - $90',
+        'Above $90'
+      ],
+      key: 'priceRange'
+    }
   ];
 
   const bouquets = [
@@ -41,7 +102,27 @@ const BestSellersPage = () => {
     { name: 'Cleeful Bouquet', price: '$50 - $90', delivery: 'SAME DAY DELIVERY', image: cleeful },
     { name: 'Sunshine Bouquet', price: '$50 - $150', delivery: 'SAME DAY DELIVERY', image: sunshine },
     { name: 'Sweetheart Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: sweetheart },
+    { name: 'I Love You Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: ILoveYou},
+    { name: 'My Dearling Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: MyDearling },
+    { name: 'Honey Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: Honey },
+    { name: 'Heart Beat Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: HeartBeat },
+    { name: 'My Candy Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: MyCandy },
+    { name: 'Hbiiiba Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: Hbiiiba },
+
   ];
+
+
+   const toggleFilter = (categoryKey, value) => {
+    setActiveFilters(prev => ({
+      ...prev,
+      [categoryKey]: prev[categoryKey] === value ? null : value
+    }));
+  };
+
+  const toggleDropdown = (dropdownName) => {
+    setShowDropdown(showDropdown === dropdownName ? null : dropdownName);
+  };
+
 
   return (
     <PageContainer>
@@ -67,37 +148,76 @@ const BestSellersPage = () => {
         </SortHeader>
         
         <SortOptionsContainer>
-          <SortDropdown onClick={() => setShowDropdown(!showDropdown)}>
-            <span>{sortOption}</span>
-            <FaChevronDown className={`chevron ${showDropdown ? 'rotate' : ''}`} />
-            
-            {showDropdown && (
+          <SortDropdown onClick={() => toggleDropdown('sort')}>
+            <span>Sort: {activeSort}</span> 
+            <FaChevronDown className={`chevron ${showDropdown === 'sort' ? 'rotate' : ''}`} />
+            {showDropdown === 'sort' && (
               <DropdownMenu>
                 {sortOptions.map(option => (
                   <DropdownItem 
                     key={option}
-                    active={sortOption === option}
+                    active={activeSort === option}
                     onClick={() => {
-                      setSortOption(option);
-                      setShowDropdown(false);
+                      setActiveSort(option);
+                      setShowDropdown(null);
                     }}
                   >
                     {option}
-                    {sortOption === option && <FaLeaf className="leaf-icon" />}
+                    {activeSort === option && <FaLeaf className="leaf-icon" />}
                   </DropdownItem>
                 ))}
               </DropdownMenu>
             )}
           </SortDropdown>
 
-          <FilterTags>
-            {filterOptions.map(filter => (
-              <FilterTag key={filter}>
-                {filter}
-              </FilterTag>
-            ))}
-          </FilterTags>
+          {/* Filter Dropdowns */}
+          {filterCategories.map(category => (
+            <FilterDropdown key={category.key}>
+              <FilterDropdownButton onClick={() => toggleDropdown(category.key)}>
+                <span>{category.name}</span>
+                <FaChevronDown className={`chevron ${showDropdown === category.key ? 'rotate' : ''}`} />
+              </FilterDropdownButton>
+              
+              {showDropdown === category.key && (
+                <FilterDropdownMenu>
+                  {category.options.map(option => (
+                    <FilterOption
+                      key={option}
+                      active={activeFilters[category.key] === option}
+                      onClick={() => toggleFilter(category.key, option)}
+                    >
+                      {option}
+                      {activeFilters[category.key] === option && <FaLeaf className="leaf-icon" />}
+                    </FilterOption>
+                  ))}
+                </FilterDropdownMenu>
+              )}
+            </FilterDropdown>
+          ))}
         </SortOptionsContainer>
+
+        {/* Active Filters Display */}
+        {Object.values(activeFilters).some(Boolean) && (
+          <ActiveFiltersContainer>
+            <span>Active Filters:</span>
+            {Object.entries(activeFilters).map(([key, value]) => (
+              value && (
+                <ActiveFilter key={`${key}-${value}`}>
+                  {value}
+                  <RemoveFilter onClick={() => toggleFilter(key, value)}>×</RemoveFilter>
+                </ActiveFilter>
+              )
+            ))}
+            <ClearAll onClick={() => setActiveFilters({
+              occasion: null,
+              flowerType: null,
+              color: null,
+              priceRange: null
+            })}>
+              Clear All
+            </ClearAll>
+          </ActiveFiltersContainer>
+        )}
 
         <FloralDecorationLeft>✿</FloralDecorationLeft>
         <FloralDecorationRight>✿</FloralDecorationRight>
@@ -242,35 +362,12 @@ const DropdownItem = styled.div`
   &:hover {
     background: #f9f3f7;
   }
-
-  .leaf-icon {
+.leaf-icon {
     color: #8bc34a;
     font-size: 0.9rem;
   }
 `;
 
-const FilterTags = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-`;
-
-const FilterTag = styled.div`
-  padding: 0.5rem 1rem;
-  background: white;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  border: 1px solid #e8e8e8;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #451a2b;
-    color: white;
-    transform: translateY(-2px);
-  }
-`;
 
 const FloralDecorationLeft = styled.div`
   position: absolute;
@@ -334,5 +431,121 @@ const DeliveryInfo = styled.p`
   font-size: 0.8rem;
   font-weight: bold;
 `;
+
+
+const FilterDropdown = styled.div`
+  position: relative;
+`;
+
+const FilterDropdownButton = styled.div`
+  padding: 0.75rem 1.25rem;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 150px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-color: #d1a3c0;
+  }
+
+  .chevron {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+    color: #451a2b;
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+  }
+`;
+
+const FilterDropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+  margin-top: 5px;
+  overflow: hidden;
+`;
+
+const FilterOption = styled.div`
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: ${props => props.active ? '#f9f3f7' : 'white'};
+  color: ${props => props.active ? '#451a2b' : '#333'};
+  font-weight: ${props => props.active ? '600' : '400'};
+  cursor: pointer;
+
+  &:hover {
+    background: #f9f3f7;
+  }
+
+  .leaf-icon {
+    color: #8bc34a;
+    font-size: 0.9rem;
+  }
+`;
+
+const ActiveFiltersContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e8e8;
+
+  span {
+    font-weight: 600;
+    color: #451a2b;
+  }
+`;
+
+const ActiveFilter = styled.div`
+  padding: 0.5rem 1rem;
+  background: #f9f3f7;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const RemoveFilter = styled.span`
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #d1a3c0;
+
+  &:hover {
+    color: #451a2b;
+  }
+`;
+
+const ClearAll = styled.span`
+  cursor: pointer;
+  color: #d1a3c0;
+  font-size: 0.85rem;
+  margin-left: auto;
+
+  &:hover {
+    color: #451a2b;
+    text-decoration: underline;
+  }
+`;
+
 
 export default BestSellersPage;

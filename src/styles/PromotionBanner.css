@@ -233,7 +233,7 @@
 }
 
 .dropdown-column a {
-  color: #000; /* ✅ Black links */
+  color: #000; 
   text-decoration: none;
   padding: 0.5rem 0;
   transition: background 0.2s;

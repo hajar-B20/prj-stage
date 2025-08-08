@@ -13,6 +13,7 @@ import BirthdayBlooms from '@components/BirthdayBlooms';
 import SignIn from '@pages/SignIn';
 import SignUp from '@pages/SignUp';
 import BestSellers from '@pages/BestSellers';
+import BouquetDetail1 from '@components/BouquetDetail1';
 
 function App() {
   const location = useLocation();
@@ -53,6 +54,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/search" element={<SearchSection />} />
           <Route path="/best-sellers" element={<BestSellers />} />
+          <Route path="/bouquets/:id" element={<BouquetDetail1 />} />
         </Routes>
       </main>
     </div>
@@ -60,3 +62,4 @@ function App() {
 }
 
 export default App;
+
