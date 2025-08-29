@@ -18,6 +18,7 @@ import CheckoutPage from '@components/CheckoutPage';
 import PaymentPage from '@pages/PaymentPage';
 import OrderPlacedPage from '@pages/OrderPlacedPage';
 import FlowerChatBot from '@components/FlowerChatBot';
+import HelpPage from '@pages/HelpPage';
 
 function App() {
   const location = useLocation();
@@ -62,8 +63,10 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/order-placed" element={<OrderPlacedPage />} />
+          <Route path="/help" element={<HelpPage />} />
+
         </Routes>
-        
+
       <FlowerChatBot />
 
       </main>

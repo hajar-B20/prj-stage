@@ -22,6 +22,10 @@
 }
 
 
+
+
+
+
 .bouquet-grid-horizontal {
   display: flex;
   overflow-x: auto;
@@ -64,6 +68,8 @@
   margin-bottom: 12px;
   
 }
+
+
 
 .price {
   font-size: 1rem;
