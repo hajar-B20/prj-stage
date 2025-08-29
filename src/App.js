@@ -14,6 +14,10 @@ import SignIn from '@pages/SignIn';
 import SignUp from '@pages/SignUp';
 import BestSellers from '@pages/BestSellers';
 import BouquetDetail1 from '@components/BouquetDetail1';
+import CheckoutPage from '@components/CheckoutPage';
+import PaymentPage from '@pages/PaymentPage';
+import OrderPlacedPage from '@pages/OrderPlacedPage';
+import FlowerChatBot from '@components/FlowerChatBot';
 
 function App() {
   const location = useLocation();
@@ -55,7 +59,13 @@ function App() {
           <Route path="/search" element={<SearchSection />} />
           <Route path="/best-sellers" element={<BestSellers />} />
           <Route path="/bouquets/:id" element={<BouquetDetail1 />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/order-placed" element={<OrderPlacedPage />} />
         </Routes>
+        
+      <FlowerChatBot />
+
       </main>
     </div>
   );

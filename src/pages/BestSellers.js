@@ -16,7 +16,10 @@ import MyDearling from '@assets/BS10.jpeg';
 import Honey from '@assets/BS11.jpeg';
 import HeartBeat from '@assets/BS12.jpeg';
 import MyCandy from '@assets/BS13.jpeg';
-import Hbiiiba from '@assets/BS14.jpeg';   
+import Hbiiiba from '@assets/BS14.jpeg'; 
+import HA9LMLH from '@assets/B15.jpeg';   
+import TWAHCHTK from '@assets/B16.jpeg';   
+
 
 
 const BestSellersPage = () => {
@@ -94,20 +97,22 @@ const BestSellersPage = () => {
   ];
 
   const bouquets = [
-    { name: 'Lucky Lily Bouquet', price: '$55 - $95', delivery: 'SAME DAY DELIVERY', image: luckyLily },
-    { name: 'Botanical Dream Bouquet', price: '$55 - $75', delivery: 'SAME DAY DELIVERY', image: botanicalDream },
-    { name: 'Luminous Morning Bouquet', price: '$50 - $70', delivery: 'SAME DAY DELIVERY', image: luminousMorning },
-    { name: 'Craperful Bouquet', price: '$55 - $100', delivery: 'SAME DAY DELIVERY', image: craperful },
-    { name: 'Sweet As Can Be Bouquet', price: '$55 - $75', delivery: 'SAME DAY DELIVERY', image: sweetAsCanBe },
-    { name: 'Cleeful Bouquet', price: '$50 - $90', delivery: 'SAME DAY DELIVERY', image: cleeful },
-    { name: 'Sunshine Bouquet', price: '$50 - $150', delivery: 'SAME DAY DELIVERY', image: sunshine },
-    { name: 'Sweetheart Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: sweetheart },
-    { name: 'I Love You Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: ILoveYou},
-    { name: 'My Dearling Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: MyDearling },
-    { name: 'Honey Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: Honey },
-    { name: 'Heart Beat Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: HeartBeat },
-    { name: 'My Candy Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: MyCandy },
-    { name: 'Hbiiiba Bouquet', price: '$50 - $200', delivery: 'SAME DAY DELIVERY', image: Hbiiiba },
+    { name: 'Lucky Lily Bouquet', price: '155', delivery: 'SAME DAY DELIVERY', image: luckyLily },
+    { name: 'Sweet Dream Bouquet', price: '175', delivery: 'SAME DAY DELIVERY', image: botanicalDream },
+    { name: 'Luminous Morning Bouquet', price: '250', delivery: 'SAME DAY DELIVERY', image: luminousMorning },
+    { name: 'Happy Birthday Bouquet', price: '100', delivery: 'SAME DAY DELIVERY', image: craperful },
+    { name: 'Sweet As Can Be Bouquet', price: '275', delivery: 'SAME DAY DELIVERY', image: sweetAsCanBe },
+    { name: 'Cleeful Bouquet', price: '290', delivery: 'SAME DAY DELIVERY', image: cleeful },
+    { name: 'Sunshine Bouquet', price: '150', delivery: 'SAME DAY DELIVERY', image: sunshine },
+    { name: 'Sweetheart Bouquet', price: '200', delivery: 'SAME DAY DELIVERY', image: sweetheart },
+    { name: 'I Love You Bouquet', price: '450', delivery: 'SAME DAY DELIVERY', image: ILoveYou},
+    { name: 'My Dearling Bouquet', price: '150', delivery: 'SAME DAY DELIVERY', image: MyDearling },
+    { name: 'Honey Bouquet', price: '250', delivery: 'SAME DAY DELIVERY', image: Honey },
+    { name: 'Heart Beat Bouquet', price: '150', delivery: 'SAME DAY DELIVERY', image: HeartBeat },
+    { name: 'My Candy Bouquet', price: '105', delivery: 'SAME DAY DELIVERY', image: MyCandy },
+    { name: 'Hbiiiba Bouquet', price: '550', delivery: 'SAME DAY DELIVERY', image: Hbiiiba },
+    { name: 'HA9 LMLH Bouquet', price: '550', delivery: 'SAME DAY DELIVERY', image: HA9LMLH },
+    { name: 'TWAHCHTK Bouquet', price: '500', delivery: 'SAME DAY DELIVERY', image: TWAHCHTK },
 
   ];
 
@@ -225,12 +230,18 @@ const BestSellersPage = () => {
       
       <BouquetGrid>
         {bouquets.map((bouquet, index) => (
-          <BouquetCard key={index}>
-            <BouquetImage src={bouquet.image} alt={bouquet.name} />
-            <BouquetName>{bouquet.name}</BouquetName>
-            <BouquetPrice>{bouquet.price}</BouquetPrice>
-            <DeliveryInfo>{bouquet.delivery}</DeliveryInfo>
-          </BouquetCard>
+          <Link 
+            to={`/bouquets/${index}`} 
+            key={index}
+            state={{ bouquet }} // Pass the bouquet data
+          >
+            <BouquetCard>
+              <BouquetImage src={bouquet.image} alt={bouquet.name} />
+              <BouquetName>{bouquet.name}</BouquetName>
+              <BouquetPrice>{bouquet.price}</BouquetPrice>
+              <DeliveryInfo>{bouquet.delivery}</DeliveryInfo>
+            </BouquetCard>
+          </Link>
         ))}
       </BouquetGrid>
     </PageContainer>

@@ -13,7 +13,7 @@ function GiftSearchCard() {
                     type="text"
                     id="zip"
                     name="zip"
-                    placeholder="Delivery Zip Code"
+                    placeholder="Delivery City"
                 />
                 
                 <label htmlFor="date">Delivery Date</label>
